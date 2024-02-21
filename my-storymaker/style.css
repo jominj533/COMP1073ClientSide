@@ -1,0 +1,30 @@
+/* styles.css */
+
+/* Set background color for the entire page */
+body {
+    background-color: lightblue;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the heading */
+h1 {
+    color: white;
+    text-align: center;
+}
+
+/* Style the buttons */
+button {
+    background-color: #0074D9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Style the completed story text */
+#completedButton {
+    font-size: 18px;
+    margin-top: 20px;
+}
