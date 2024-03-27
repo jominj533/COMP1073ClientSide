@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smoothie Order</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    select,
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #Output {
+      margin-top: 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Smoothie Machine</h1>
+  
+  <form id="Smoothie-Form">
+    <h2>Create Your Smoothie</h2>
+    
+    <label for="Savour">Savour:</label>
+    <select id="Savour" name="Savour">
+      <option value="Watermelon">Watermelon</option>
+      <option value="Pineapple">Pineapple</option>
+      <option value="Apple">Apple</option>
+    </select>
+    
+    <label for="frosting">frosting:</label>
+    <input type="checkbox" id="chocolate" name="frosting" value="chocolate">
+    <label for="chocolate">Chocolate</label>
+    <input type="checkbox" id="honey" name="frosting" value="honey">
+    <label for="honey">Honey</label>
+    <input type="checkbox" id="Vanilla" name="frosting" value="Vanilla">
+    <label for="Vanilla">Vanilla</label>
+    
+    <label for="size">Size:</label>
+    <input type="radio" id="small" name="size" value="small">
+    <label for="small">Small</label>
+    <input type="radio" id="medium" name="size" value="medium">
+    <label for="medium">Medium</label>
+    <input type="radio" id="large" name="size" value="large">
+    <label for="large">Large</label>
+
+    <div class="button-container">
+      <button type="button" onclick="createSmoothie()">Order</button>
+    </div>
+  </form>
+  
+  <div id="Output"></div>
+  
+  <script>
+    // Smoothie object class
+    class Smoothie {
+      constructor(Savour, frosting, size) {
+        this.Savour = Savour;
+        this.frosting = frosting;
+        this.size = size;
+      }
+      
+      getDescription() {
+        return `Your ${this.size} ${this.Savour} smoothie with ${this.frosting.join(', ')} frosting is ready!`;
+      }
+    }
+    
+    function createSmoothie() {
+      // Get form values
+      const Savour = document.getElementById('Savour').value;
+      const frosting = Array.from(document.querySelectorAll('input[name="frosting"]:checked')).map(input => input.value);
+      const size = document.querySelector('input[name="size"]:checked').value;
+      
+      // Create Smoothie object
+      const smoothie = new Smoothie(Savour, frosting, size);
+      
+      // Output smoothie description to HTML
+      document.getElementById('Output').innerText = smoothie.getDescription();
+    }
+  </script>
+
+</body>
+</html>
